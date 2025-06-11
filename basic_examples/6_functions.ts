@@ -3,33 +3,59 @@
 *
 */
 
-console.log("---------------FUNCTION---------------------");
-//third param is optional
+console.log("\n=========================== #Prodbug108: RETURN TYPE ===========================");
+/**
+ * Return Type is Optional in Typescript
+ */
 
-function disp_details(id, name:string, mail_id?:string) { 
-   console.log("ID:", id); 
-   console.log("Name",name); 
-   
-   if(mail_id != undefined)  
-     console.log("Email Id",mail_id); 
+function sum1(m:number, n:number){
+   return m + n;
 }
 
-disp_details(123,"John");
-disp_details(111,"mary","mary@xyz.com");
+function sum2(x:number, y:number): number{
+   return x + y;
+}
+
+console.log("First Sum: ",sum1(100, 8)); 
+console.log("Second Sum: ",sum2(100, 8)); 
 
 
 
-console.log("---------------REST PARAMS / VAR ARGUMENTS---------------------");
-//Var Args in Java is same as Rest Params in Type Script
 
+console.log("\n=========================== #Prodbug108: FUNCTION ===========================");
+/**
+ * @param id auto assiged int
+ * @param name manual assigned as string
+ * @param mail_id optional param
+ */
+
+function displayDetails(id, name:string, mailId?:string) { 
+   console.log("ID:", id); 
+   console.log("Name: ",name); 
+   
+   if(mailId != undefined)  
+     console.log("Email Id: ",mailId); 
+}
+
+displayDetails(123,"John");
+displayDetails(111,"Mary","mary@xyz.com");
+
+
+
+
+console.log("\n=========================== #Prodbug108: REST PARAMS / VAR ARGUMENTS ===========================");
+
+/**
+ * @param nums : Variable Args | Rest Params 
+ *       list of numbers will be accepted
+ */
 function addNumbers(...nums:number[]) {  
-   var i;   
    var sum = 0; 
    
-   for(i = 0;i<nums.length;i++) { 
+   for(var i = 0;i<nums.length;i++) { 
       sum = sum + nums[i]; 
    } 
-   console.log("sum of the numbers",sum) 
+   console.log("Sum of the numbers: ",sum) 
 } 
 addNumbers(1,2,3) 
 addNumbers(10,10,10,10,10)
@@ -37,49 +63,53 @@ addNumbers(10,10,10,10,10)
 
 
 
-console.log("---------------DEFAULT PARAMS---------------------");
+console.log("\n=========================== #Prodbug108: DEFAULT PARAMS ===========================");
 
-function calculate_discount(price:number,rate = 0.50) { 
+function calculatDiscount(price:number,rate = 0.50) { 
    var discount = price * rate; 
    console.log("Discount Amount: ",discount); 
 } 
-calculate_discount(1000) 
-calculate_discount(1000,0.30)
+calculatDiscount(1000) 
+calculatDiscount(1000,0.30)
 
 
 
 
-console.log("---------------ANONYMOUS FUNCTION---------------------");
-//Anonymous func dynamically declared at runtime and assign to a variable
-var res = function(a,b) { 
-   return a*b;  
-}; 
+console.log("\n=========================== #Prodbug108: ANONYMOUS FUNCTION WITHOUT PARAM ===========================");
 
-console.log(res(12,2)) 
-
-
-console.log("---------------ANONYMOUS FUNCTION WITHOUT PARAM---------------------");
 var msg = function() { 
    return "hello world";  
 } 
-console.log(msg())
+console.log(msg)           // Wrong Way
+console.log(msg())         // Right Way
 
 
 
-console.log("---------------ANONYMOUS FUNCTION WITH PARAM---------------------");
-var res = function(a,b) { 
+
+console.log("\n=========================== #Prodbug108: ANONYMOUS FUNCTION WITH PARAM ===========================");
+
+//Anonymous func dynamically declared at runtime and assign to a variable
+var result = function(a,b) { 
    return a*b;  
 }; 
-console.log(res(12,2)) 
+
+var anonymousFuncResult = result(12,2)
+console.log(anonymousFuncResult) 
 
 
-console.log("---------------Function Expression---------------------");
+
+
+console.log("\n=========================== #Prodbug108: Function Expression ===========================");
+
 var myFunction = new Function("a", "b", "return a * b"); 
 var x = myFunction(4, 3); 
 console.log(x);
 
 
-console.log("---------------Recursion---------------------");
+
+
+console.log("\n=========================== #Prodbug108: Recursion ===========================");
+
 function factorial(number) {
    if (number <= 0) {         // termination case
       return 1; 
@@ -90,7 +120,10 @@ function factorial(number) {
 console.log(factorial(6));   
 
 
-console.log("---------------Anonymous Recursion Function---------------------");
+
+
+console.log("\n=========================== #Prodbug108: Anonymous Recursion Function ===========================");
+
 (function () { 
    var x = "Hello!!";   
    console.log(x)     
